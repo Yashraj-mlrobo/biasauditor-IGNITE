@@ -1,0 +1,412 @@
+<!-- settings.html -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Settings - IGNITE Bias Auditor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#001e2c",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#775a00",
+                        "outline-variant": "#d2c5ae",
+                        "surface-container-highest": "#dce2f3",
+                        "secondary-container": "#dcdff1",
+                        "primary-container": "#f0c040",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#7ad0ff",
+                        "on-secondary-fixed-variant": "#434654",
+                        "on-tertiary-container": "#005979",
+                        "primary-fixed": "#ffdf97",
+                        "background": "#f9f9ff",
+                        "primary-fixed-dim": "#f0c040",
+                        "tertiary-fixed": "#c3e7ff",
+                        "on-primary-fixed": "#251a00",
+                        "on-surface-variant": "#4e4635",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "inverse-primary": "#f0c040",
+                        "surface-variant": "#dce2f3",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d3daea",
+                        "on-secondary-container": "#5e6271",
+                        "surface-container": "#e7eefe",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "outline": "#807662",
+                        "inverse-surface": "#2a313d",
+                        "surface-container-high": "#e2e8f8",
+                        "on-background": "#151c27",
+                        "secondary": "#5a5e6d",
+                        "tertiary-container": "#79d0ff",
+                        "on-secondary-fixed": "#171b28",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#00668a",
+                        "on-surface": "#151c27",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#5a4400",
+                        "secondary-fixed": "#dfe2f3",
+                        "surface-tint": "#775a00",
+                        "secondary-fixed-dim": "#c3c6d7",
+                        "on-primary-container": "#684f00",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "base": "8px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "h3": [
+                            "Playfair Display"
+                        ],
+                        "label-caps": [
+                            "DM Mono"
+                        ],
+                        "body-md": [
+                            "DM Sans"
+                        ],
+                        "h2": [
+                            "Playfair Display"
+                        ],
+                        "body-lg": [
+                            "DM Sans"
+                        ],
+                        "body-sm": [
+                            "DM Sans"
+                        ],
+                        "code": [
+                            "DM Mono"
+                        ],
+                        "h1": [
+                            "Playfair Display"
+                        ]
+                    },
+                    "fontSize": {
+                        "h3": [
+                            "24px",
+                            {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "label-caps": [
+                            "12px",
+                            {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                            }
+                        ],
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "h2": [
+                            "32px",
+                            {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "body-lg": [
+                            "18px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "body-sm": [
+                            "14px",
+                            {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "code": [
+                            "13px",
+                            {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "h1": [
+                            "48px",
+                            {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        [data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        /* Dark mode overrides */
+        html.dark {
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        html.dark .bg-background {
+            background-color: #020617 !important;
+        }
+
+        html.dark .bg-surface-container-low {
+            background-color: #0f172a !important;
+        }
+
+        html.dark .bg-surface-container-lowest {
+            background-color: #020617 !important;
+        }
+
+        html.dark .bg-surface-container-high {
+            background-color: #1e293b !important;
+        }
+
+        html.dark .bg-surface {
+            background-color: #1e293b !important;
+        }
+
+        html.dark .text-on-surface,
+        html.dark .text-on-background {
+            color: #f8fafc !important;
+        }
+
+        html.dark .text-on-surface-variant {
+            color: #cbd5e1 !important;
+        }
+
+        html.dark .border-surface-variant {
+            border-color: #334155 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <nav
+        class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="flex items-center justify-between px-6 h-16 w-full max-w-[1280px] mx-auto">
+            <div class="flex items-center gap-6">
+                <span
+                    class="font-serif text-2xl font-black text-slate-900 dark:text-white tracking-tighter">IGNITE</span>
+                <div class="hidden md:flex gap-6">
+                    <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-yellow-500 dark:hover:text-yellow-300 transition-colors duration-200 scale-95 active:scale-90 transition-transform"
+                        href="dashboard.html">Dashboard</a>
+                    <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-yellow-500 dark:hover:text-yellow-300 transition-colors duration-200 scale-95 active:scale-90 transition-transform"
+                        href="audit-tool.html">Audits</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <button
+                        class="p-2 text-slate-600 dark:text-slate-400 hover:text-yellow-500 transition-colors duration-200 scale-95 active:scale-90 transition-transform"
+                        onclick="document.documentElement.classList.toggle('dark'); document.documentElement.classList.toggle('light'); this.querySelector('span').textContent = document.documentElement.classList.contains('dark') ? 'light_mode' : 'dark_mode'">
+                        <span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+                    </button>
+                    <button
+                        class="p-2 text-slate-600 dark:text-slate-400 hover:text-yellow-500 transition-colors duration-200 scale-95 active:scale-90 transition-transform">
+                        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                    </button>
+                    <button
+                        class="p-2 text-yellow-600 dark:text-yellow-400 border-b-2 border-yellow-500 pb-1 font-bold hover:text-yellow-500 transition-colors duration-200 scale-95 active:scale-90 transition-transform">
+                        <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    </button>
+                </div>
+                <button
+                    class="bg-primary-container text-on-primary-fixed px-4 py-2 rounded font-label-caps uppercase hover:opacity-90 transition-opacity">New
+                    Audit</button>
+                <img alt="Auditor Profile" class="w-8 h-8 rounded-full border border-outline-variant"
+                    data-alt="Professional headshot of a mature woman with glasses, neutral background, soft corporate lighting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA52DY7ZzpcBbUnFvAn8_8YRGnL7fKBoa2b_45GaApMlP7DGMcb2cBRlBblGRvStYyw1-jjAyXa3KNOjbcfeR1PJ0bj0xDli5vGbFujUXJurMa1fnRQNEn0r4jUlTolmBkkjhV6LDdtgge0TZB6U-HW8x2d1Ltg2Zt7c0f3kzY3w0c60BG5x2iZY_Xcfb6b9OYYcnL2jbJENTr0cFN3tU0RuhjSzeaOFO6OATdm6n-d9Aqd2qJ3I0pP20tmRYwFvbSwcAdt0IklSNw" />
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content Canvas -->
+    <main class="flex-grow pt-[88px] pb-xl px-6">
+        <div class="max-w-[600px] mx-auto w-full flex flex-col gap-lg">
+            <header class="mb-sm">
+                <h1 class="font-h1 text-h1 text-on-surface">Settings</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Manage your account preferences and
+                    diagnostic configurations.</p>
+            </header>
+            <!-- Profile Settings -->
+            <section
+                class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-surface-variant flex flex-col gap-md">
+                <h2 class="font-h3 text-h3 text-on-surface border-b border-surface-variant pb-sm">Profile Settings</h2>
+                <div class="flex flex-col gap-sm">
+                    <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Full Name</label>
+                    <input
+                        class="w-full bg-surface-container-low border border-outline-variant rounded p-3 font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all"
+                        type="text" value="Dr. Sarah Jenkins" />
+                </div>
+                <div class="flex flex-col gap-sm">
+                    <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Email
+                        Address</label>
+                    <input
+                        class="w-full bg-surface-container border border-surface-variant rounded p-3 font-body-md text-on-surface-variant cursor-not-allowed opacity-70"
+                        readonly="" type="email" value="s.jenkins@ignite.ai" />
+                </div>
+                <div class="pt-sm">
+                    <button
+                        class="bg-primary-container text-on-primary-fixed px-6 py-3 rounded font-label-caps uppercase hover:opacity-90 transition-opacity">Save
+                        Changes</button>
+                </div>
+            </section>
+            <!-- Appearance -->
+            <section
+                class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-surface-variant flex flex-col gap-md">
+                <h2 class="font-h3 text-h3 text-on-surface border-b border-surface-variant pb-sm">Appearance</h2>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="font-body-md text-body-md text-on-surface font-medium">Interface Theme</p>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Select your preferred viewing
+                            environment.</p>
+                    </div>
+                    <div class="bg-surface-container-low border border-outline-variant rounded-full p-1 flex items-center relative w-32 h-10 cursor-pointer"
+                        onclick="document.documentElement.classList.toggle('dark'); document.documentElement.classList.toggle('light'); document.getElementById('theme-slider').classList.toggle('translate-x-[64px]');">
+                        <div class="absolute left-1 bg-white rounded-full w-14 h-8 shadow-sm transition-transform duration-300"
+                            id="theme-slider">
+                        </div>
+                        <div class="flex-1 flex justify-center z-10 text-on-surface">
+                            <span class="material-symbols-outlined text-[20px]" data-icon="light_mode">light_mode</span>
+                        </div>
+                        <div class="flex-1 flex justify-center z-10 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[20px]" data-icon="dark_mode">dark_mode</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Account Security -->
+            <section
+                class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-surface-variant flex flex-col gap-md">
+                <h2 class="font-h3 text-h3 text-on-surface border-b border-surface-variant pb-sm">Account Security</h2>
+                <div class="flex flex-col gap-sm">
+                    <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Current
+                        Password</label>
+                    <input
+                        class="w-full bg-surface-container-low border border-outline-variant rounded p-3 font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all"
+                        placeholder="••••••••" type="password" />
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                    <div class="flex flex-col gap-sm">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">New
+                            Password</label>
+                        <input
+                            class="w-full bg-surface-container-low border border-outline-variant rounded p-3 font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all"
+                            placeholder="Enter new password" type="password" />
+                    </div>
+                    <div class="flex flex-col gap-sm">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Confirm
+                            New</label>
+                        <input
+                            class="w-full bg-surface-container-low border border-outline-variant rounded p-3 font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all"
+                            placeholder="Confirm new password" type="password" />
+                    </div>
+                </div>
+                <div class="pt-sm">
+                    <button
+                        class="border border-outline-variant text-on-surface px-6 py-3 rounded font-label-caps uppercase hover:bg-surface-container-low transition-colors">Update
+                        Password</button>
+                </div>
+            </section>
+            <!-- Data & Privacy -->
+            <section
+                class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-surface-variant flex flex-col gap-md">
+                <h2 class="font-h3 text-h3 text-on-surface border-b border-surface-variant pb-sm">Data &amp; Privacy
+                </h2>
+                <div class="flex flex-col gap-4">
+                    <button
+                        class="w-full flex items-center justify-center gap-2 border border-outline-variant text-on-surface px-6 py-3 rounded font-label-caps uppercase hover:bg-surface-container-low transition-colors">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        Download my data
+                    </button>
+                    <button
+                        class="w-full flex items-center justify-center gap-2 border border-error text-error px-6 py-3 rounded font-label-caps uppercase hover:bg-error-container/30 transition-colors">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+                        Delete all audit history
+                    </button>
+                    <button
+                        class="w-full text-center text-error font-label-caps uppercase hover:underline mt-sm p-2 transition-all">
+                        Delete Account
+                    </button>
+                </div>
+            </section>
+            <!-- About -->
+            <section class="flex flex-col items-center justify-center pt-md gap-4 opacity-70">
+                <p class="font-code text-code text-on-surface-variant">Version 2.4.1 (Stable Build)</p>
+                <div
+                    class="bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[16px]"
+                        data-icon="verified">verified</span>
+                    <span class="font-label-caps text-label-caps text-on-surface uppercase">Google Solution Challenge
+                        2026</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Maintained by Team IGNITE.</p>
+            </section>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-8 mt-auto border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-sans text-xs tracking-wide uppercase text-slate-500 dark:text-slate-400">© 2024 IGNITE AI
+                Fairness. Modern Academic Standards Applied.</p>
+            <div class="flex flex-wrap gap-6 justify-center">
+                <a class="font-sans text-xs tracking-wide uppercase text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition-colors opacity-80 hover:opacity-100"
+                    href="#">Privacy Policy</a>
+                <a class="font-sans text-xs tracking-wide uppercase text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition-colors opacity-80 hover:opacity-100"
+                    href="#">Terms of Service</a>
+                <a class="font-sans text-xs tracking-wide uppercase text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition-colors opacity-80 hover:opacity-100"
+                    href="#">Bias Standards</a>
+                <a class="font-sans text-xs tracking-wide uppercase text-slate-500 dark:text-slate-400 hover:text-yellow-500 transition-colors opacity-80 hover:opacity-100"
+                    href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!-- signup.html -->
+
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>IGNITE Bias Auditor - Sign Up</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#001e2c",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#775a00",
+                        "outline-variant": "#d2c5ae",
+                        "surface-container-highest": "#dce2f3",
+                        "secondary-container": "#dcdff1",
+                        "primary-container": "#f0c040",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#7ad0ff",
+                        "on-secondary-fixed-variant": "#434654",
+                        "on-tertiary-container": "#005979",
+                        "primary-fixed": "#ffdf97",
+                        "background": "#f9f9ff",
+                        "primary-fixed-dim": "#f0c040",
+                        "tertiary-fixed": "#c3e7ff",
+                        "on-primary-fixed": "#251a00",
+                        "on-surface-variant": "#4e4635",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "inverse-primary": "#f0c040",
+                        "surface-variant": "#dce2f3",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d3daea",
+                        "on-secondary-container": "#5e6271",
+                        "surface-container": "#e7eefe",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "outline": "#807662",
+                        "inverse-surface": "#2a313d",
+                        "surface-container-high": "#e2e8f8",
+                        "on-background": "#151c27",
+                        "secondary": "#5a5e6d",
+                        "tertiary-container": "#79d0ff",
+                        "on-secondary-fixed": "#171b28",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#00668a",
+                        "on-surface": "#151c27",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#5a4400",
+                        "secondary-fixed": "#dfe2f3",
+                        "surface-tint": "#775a00",
+                        "secondary-fixed-dim": "#c3c6d7",
+                        "on-primary-container": "#684f00",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "base": "8px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Playfair Display"],
+                        "label-caps": ["DM Mono"],
+                        "body-md": ["DM Sans"],
+                        "h2": ["Playfair Display"],
+                        "body-lg": ["DM Sans"],
+                        "body-sm": ["DM Sans"],
+                        "code": ["DM Mono"],
+                        "h1": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "code": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-md">
+    <!-- Top Right Actions -->
+    <div class="fixed top-md right-md flex gap-sm">
+        <button aria-label="Toggle dark mode"
+            class="p-base text-secondary hover:text-primary transition-colors duration-200 bg-surface-container-low rounded-full shadow-sm">
+            <span class="material-symbols-outlined">light_mode</span>
+        </button>
+    </div>
+    <!-- Main Container -->
+    <main
+        class="w-full max-w-[420px] bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant p-lg flex flex-col gap-md">
+        <!-- Header -->
+        <div class="text-center flex flex-col items-center gap-xs">
+            <div class="font-h1 text-h1 text-primary-fixed-dim mb-sm tracking-tighter">IGNITE</div>
+            <h1 class="font-h2 text-h2 text-on-surface">Create your account</h1>
+            <p class="font-body-md text-body-md text-on-surface-variant">Join IGNITE Bias Auditor</p>
+        </div>
+        <!-- Form -->
+        <form class="flex flex-col gap-md mt-sm">
+            <!-- Full Name -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface" for="fullName">Full Name</label>
+                <input
+                    class="w-full px-sm py-[10px] rounded bg-surface border border-outline-variant text-on-surface font-body-md text-body-md focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim transition-colors placeholder:text-outline"
+                    id="fullName" placeholder="Dr. Jane Doe" type="text" />
+            </div>
+            <!-- Email -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface" for="email">Email</label>
+                <input
+                    class="w-full px-sm py-[10px] rounded bg-surface border border-outline-variant text-on-surface font-body-md text-body-md focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim transition-colors placeholder:text-outline"
+                    id="email" placeholder="jane.doe@institution.edu" type="email" />
+            </div>
+            <!-- Password -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface" for="password">Password</label>
+                <input
+                    class="w-full px-sm py-[10px] rounded bg-surface border border-outline-variant text-on-surface font-body-md text-body-md focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim transition-colors placeholder:text-outline"
+                    id="password" placeholder="••••••••" type="password" />
+                <!-- Strength Indicator -->
+                <div class="flex gap-xs mt-1">
+                    <div class="h-1 flex-1 bg-surface-container-highest rounded-full overflow-hidden">
+                        <div class="h-full bg-primary-fixed-dim w-1/3"></div>
+                    </div>
+                    <div class="h-1 flex-1 bg-surface-container-highest rounded-full"></div>
+                    <div class="h-1 flex-1 bg-surface-container-highest rounded-full"></div>
+                    <div class="h-1 flex-1 bg-surface-container-highest rounded-full"></div>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant text-xs mt-1">Weak: Add numbers and symbols
+                </p>
+            </div>
+            <!-- Confirm Password -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface" for="confirmPassword">Confirm
+                    Password</label>
+                <input
+                    class="w-full px-sm py-[10px] rounded bg-surface border border-outline-variant text-on-surface font-body-md text-body-md focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim transition-colors placeholder:text-outline"
+                    id="confirmPassword" placeholder="••••••••" type="password" />
+            </div>
+            <!-- Primary Action -->
+            <button
+                class="w-full bg-primary-container text-on-primary-container font-body-md text-body-md font-medium py-sm rounded-lg hover:bg-primary-fixed hover:shadow-md active:scale-[0.98] transition-all duration-200 mt-sm"
+                type="button">
+                Create Account
+            </button>
+            <!-- Divider -->
+            <div class="flex items-center gap-sm my-sm">
+                <div class="flex-1 h-px bg-outline-variant"></div>
+                <span class="font-label-caps text-label-caps text-on-surface-variant">OR</span>
+                <div class="flex-1 h-px bg-outline-variant"></div>
+            </div>
+            <!-- OAuth Action -->
+            <button
+                class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md text-body-md font-medium py-sm rounded-lg hover:bg-surface-container-low transition-colors duration-200 flex items-center justify-center gap-sm"
+                type="button">
+                <img alt="Google logo" class="w-5 h-5"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuANu0wIbKKoOiyAOqQ_l6IJYjYMcrB2N2KpCaaTdYybURwWBtwwjdNAS3Gc5g1j40_bkrJDUpYEGbIw4Lb8ZgSUZNdc8oykZ90W3dfg-ffk7mp5_G57sj20o-NMwp8W82-tnPuhi3fTj8Z_oATJNQVU9LDx0Ac-zyc2mmqJ55_PT07K7d4JVLnYRdkJZpGnEsjk5fnSR1dH-rbhsNcifnGIo33GRU9R3cSfx3kHH8oGa1FwUmhTF6VILElc7abYgs2MCnPN0A34jCA" />
+                Continue with Google
+            </button>
+        </form>
+        <!-- Footer Links -->
+        <div class="text-center mt-md">
+            <a class="font-body-sm text-body-sm text-primary hover:text-primary-fixed-dim underline transition-colors"
+                href="login.html">Already have an account? Sign in</a>
+        </div>
+    </main>
+    <!-- Legal Footer -->
+    <footer class="mt-lg text-center max-w-[420px] opacity-80">
+        <p class="font-body-sm text-body-sm text-on-surface-variant text-xs">
+            By creating an account, you agree to our
+            <a class="underline hover:text-primary" href="#">Terms of Service</a> and
+            <a class="underline hover:text-primary" href="#">Privacy Policy</a>.
+        </p>
+    </footer>
+
+    <!-- Firebase Auth -->
+<script>
+    // Dark mode toggle
+    const toggleBtn = document.querySelector('[aria-label="Toggle dark mode"]');
+    toggleBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        document.documentElement.classList.toggle('light');
+        const icon = toggleBtn.querySelector('span');
+        icon.textContent = document.documentElement.classList.contains('dark')
+            ? 'light_mode' : 'dark_mode';
+    });
+
+    // Password strength indicator
+    const passwordInput = document.getElementById('password');
+    const strengthBars = document.querySelectorAll('.h-1.flex-1 div');
+    const strengthText = document.querySelector('.text-xs.mt-1');
+
+    passwordInput.addEventListener('input', () => {
+        const val = passwordInput.value;
+        let strength = 0;
+        if (val.length >= 8) strength++;
+        if (/[0-9]/.test(val)) strength++;
+        if (/[^a-zA-Z0-9]/.test(val)) strength++;
+        if (val.length >= 12) strength++;
+
+        const colors = ['bg-red-400', 'bg-orange-400', 'bg-yellow-400', 'bg-green-400'];
+        const labels = ['Weak: Add numbers and symbols', 'Fair: Add symbols', 'Good: Almost there', 'Strong password'];
+        
+        document.querySelectorAll('.h-1.flex-1').forEach((bar, i) => {
+            bar.innerHTML = i < strength 
+                ? `<div class="h-full ${colors[strength-1]} rounded-full transition-all"></div>` 
+                : '';
+        });
+
+        if (strengthText) strengthText.textContent = labels[strength - 1] || 'Weak: Add numbers and symbols';
+    });
+
+    // Sign Up
+    const createBtn = document.querySelector('button[type="button"]:first-of-type');
+    createBtn.addEventListener('click', async () => {
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (!fullName || !email || !password) {
+            showError('Please fill in all fields.');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            showError('Passwords do not match.');
+            return;
+        }
+
+        if (password.length < 8) {
+            showError('Password must be at least 8 characters.');
+            return;
+        }
+
+        createBtn.textContent = 'Creating account...';
+        createBtn.disabled = true;
+
+        // Redirect directly to dashboard
+        window.location.href = 'dashboard.html';
+    });
+
+    // Google Sign Up
+    const googleBtn = document.querySelectorAll('button[type="button"]')[1];
+    googleBtn.addEventListener('click', async () => {
+        // Redirect directly to dashboard
+        window.location.href = 'dashboard.html';
+    });
+
+    // Sign in link handled directly in HTML
+
+    function showError(message) {
+        let errorDiv = document.getElementById('error-msg');
+        if (!errorDiv) {
+            errorDiv = document.createElement('div');
+            errorDiv.id = 'error-msg';
+            errorDiv.className = 'p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm text-center';
+            document.querySelector('form').prepend(errorDiv);
+        }
+        errorDiv.textContent = message
+            .replace('Firebase: ', '')
+            .replace('(auth/email-already-in-use).', 'An account with this email already exists.');
+    }
+</script>
+
+</body>
+
+</html>

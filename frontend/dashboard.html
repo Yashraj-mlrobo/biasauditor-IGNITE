@@ -1,0 +1,435 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>IGNITE - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed": "#001e2c",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#775a00",
+                        "outline-variant": "#d2c5ae",
+                        "surface-container-highest": "#dce2f3",
+                        "secondary-container": "#dcdff1",
+                        "primary-container": "#f0c040",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdf97",
+                        "background": "#f9f9ff",
+                        "primary-fixed-dim": "#f0c040",
+                        "on-primary-fixed": "#251a00",
+                        "on-surface-variant": "#4e4635",
+                        "inverse-primary": "#f0c040",
+                        "surface-variant": "#dce2f3",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#5e6271",
+                        "surface-container": "#e7eefe",
+                        "surface": "#f9f9ff",
+                        "outline": "#807662",
+                        "inverse-surface": "#2a313d",
+                        "surface-container-high": "#e2e8f8",
+                        "on-background": "#151c27",
+                        "secondary": "#5a5e6d",
+                        "tertiary": "#00668a",
+                        "on-surface": "#151c27",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#5a4400",
+                        "on-primary-container": "#684f00",
+                        "on-error-container": "#93000a"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        sm: "12px", xs: "4px", xl: "80px",
+                        md: "24px", base: "8px", lg: "48px"
+                    },
+                    fontFamily: {
+                        h3: ["Playfair Display"], "label-caps": ["DM Mono"],
+                        "body-md": ["DM Sans"], h2: ["Playfair Display"],
+                        "body-lg": ["DM Sans"], "body-sm": ["DM Sans"],
+                        code: ["DM Mono"], h1: ["Playfair Display"]
+                    },
+                    fontSize: {
+                        h3: ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "label-caps": ["12px", { lineHeight: "1.0", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        h2: ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+                        code: ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+                        h1: ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        html.dark { background-color: #020617; color: #f8fafc; }
+        html.dark .bg-background { background-color: #020617 !important; }
+        html.dark .bg-surface-container-low { background-color: #0f172a !important; }
+        html.dark .bg-surface { background-color: #1e293b !important; }
+        html.dark .bg-surface-container-high { background-color: #1e293b !important; }
+        html.dark .text-on-surface,
+        html.dark .text-on-background { color: #f8fafc !important; }
+        html.dark .text-on-surface-variant { color: #cbd5e1 !important; }
+        html.dark .border-surface-variant { border-color: #334155 !important; }
+
+        /* Loading skeleton animation */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+        html.dark .skeleton {
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+
+    <!-- ── Top Navigation Bar ─────────────────────────────────────────────── -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="flex items-center justify-between px-6 h-16 w-full max-w-[1280px] mx-auto">
+
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <span class="font-serif text-2xl font-black text-slate-900 dark:text-white tracking-tighter">IGNITE</span>
+            </div>
+
+            <!-- Nav Links -->
+            <div class="hidden md:flex gap-8">
+                <a href="dashboard.html"
+                    class="text-yellow-600 dark:text-yellow-400 border-b-2 border-yellow-500 pb-1 font-bold font-serif text-lg tracking-tight transition-colors duration-200">
+                    Dashboard
+                </a>
+                <a href="audit-tool.html"
+                    class="text-slate-600 dark:text-slate-400 font-medium font-serif text-lg tracking-tight hover:text-yellow-500 dark:hover:text-yellow-300 transition-colors duration-200">
+                    Audits
+                </a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <!-- New Audit Button -->
+                <button onclick="window.location.href='audit-tool.html'"
+                    class="hidden md:block bg-primary-container text-on-primary-container font-body-sm font-medium px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">
+                    New Audit
+                </button>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    aria-label="Toggle dark mode">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+
+                <!-- Notifications (future) -->
+                <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-400"
+                    title="Notifications coming soon">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+
+                <!-- Settings -->
+                <button onclick="window.location.href='settings.html'"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400">
+                    <span class="material-symbols-outlined">settings</span>
+                </button>
+
+                <!-- Logout -->
+                <button id="logout-btn"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Sign out">
+                    <span class="material-symbols-outlined">logout</span>
+                </button>
+
+                <!-- Avatar -->
+                <div id="avatar"
+                    class="w-9 h-9 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm cursor-pointer border border-slate-200 dark:border-slate-700 hover:opacity-90 transition-opacity"
+                    onclick="window.location.href='settings.html'"
+                    title="Go to settings">
+                    U
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Main Content ───────────────────────────────────────────────────── -->
+    <main class="flex-grow pt-24 pb-lg max-w-[1280px] w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-md">
+
+        <!-- Welcome Banner -->
+        <section class="col-span-1 md:col-span-12 bg-surface-container-low rounded-lg p-md shadow-sm border border-surface-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+            <div>
+                <h1 id="welcome-name" class="font-h1 text-h1 text-on-surface mb-xs">
+                    <span class="skeleton inline-block w-64 h-10 rounded">&nbsp;</span>
+                </h1>
+                <p id="user-email" class="font-body-md text-body-md text-on-surface-variant">
+                    <span class="skeleton inline-block w-48 h-4 rounded">&nbsp;</span>
+                </p>
+            </div>
+            <button onclick="window.location.href='audit-tool.html'"
+                class="border-2 border-primary-container text-primary-fixed-dim bg-transparent hover:bg-primary-container hover:text-on-primary-container transition-colors duration-200 font-label-caps text-label-caps px-md py-sm rounded-lg flex items-center gap-xs">
+                New Audit <span class="material-symbols-outlined text-sm">add</span>
+            </button>
+        </section>
+
+        <!-- Stats Row -->
+        <section class="col-span-1 md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-md">
+            <div class="bg-surface rounded-lg p-md shadow-sm border border-surface-variant">
+                <h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Total Audits</h3>
+                <p id="total-audits" class="font-h2 text-h2 text-primary-fixed-dim">
+                    <span class="skeleton inline-block w-12 h-8 rounded">&nbsp;</span>
+                </p>
+            </div>
+            <div class="bg-surface rounded-lg p-md shadow-sm border border-surface-variant">
+                <h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Datasets Uploaded</h3>
+                <p id="datasets-uploaded" class="font-h2 text-h2 text-primary-fixed-dim">
+                    <span class="skeleton inline-block w-12 h-8 rounded">&nbsp;</span>
+                </p>
+            </div>
+            <div class="bg-surface rounded-lg p-md shadow-sm border border-surface-variant">
+                <h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Last Active</h3>
+                <p id="last-active" class="font-h2 text-h2 text-primary-fixed-dim">
+                    <span class="skeleton inline-block w-20 h-8 rounded">&nbsp;</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Audit History -->
+        <section class="col-span-1 md:col-span-12 mt-md">
+            <h2 class="font-label-caps text-label-caps text-primary-fixed-dim uppercase mb-sm">AUDIT HISTORY</h2>
+            <div class="bg-surface rounded-lg shadow-sm border border-surface-variant overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-surface-variant bg-surface-container-low">
+                                <th class="py-sm px-md font-label-caps text-label-caps text-on-surface-variant font-medium">Dataset Name</th>
+                                <th class="py-sm px-md font-label-caps text-label-caps text-on-surface-variant font-medium">Type</th>
+                                <th class="py-sm px-md font-label-caps text-label-caps text-on-surface-variant font-medium">Protected Attribute</th>
+                                <th class="py-sm px-md font-label-caps text-label-caps text-on-surface-variant font-medium">Disparate Impact</th>
+                                <th class="py-sm px-md font-label-caps text-label-caps text-on-surface-variant font-medium">Status</th>
+                                <th class="py-sm px-md font-label-caps text-label-caps text-on-surface-variant font-medium">Date</th>
+                                <th class="py-sm px-md font-label-caps text-label-caps text-on-surface-variant font-medium text-right">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody id="audit-tbody" class="font-body-sm text-body-sm text-on-surface">
+                            <!-- Firebase data populates here — skeleton shown while loading -->
+                            <tr id="loading-row">
+                                <td colspan="7" class="py-12 text-center">
+                                    <div class="flex flex-col items-center gap-3">
+                                        <div class="w-8 h-8 border-2 border-primary-container border-t-transparent rounded-full animate-spin"></div>
+                                        <p class="font-body-sm text-on-surface-variant">Loading your audit history...</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+    <footer class="w-full py-8 mt-auto border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-500 dark:text-slate-400 font-sans text-xs tracking-wide uppercase opacity-80">
+                © 2026 IGNITE Bias Auditor · Google Solution Challenge 2026 · Team IGNITE
+            </p>
+            <div class="flex gap-4">
+                <a href="#" class="text-slate-500 dark:text-slate-400 font-sans text-xs tracking-wide uppercase hover:text-yellow-500 transition-colors opacity-80 hover:opacity-100">Privacy Policy</a>
+                <a href="#" class="text-slate-500 dark:text-slate-400 font-sans text-xs tracking-wide uppercase hover:text-yellow-500 transition-colors opacity-80 hover:opacity-100">Terms</a>
+                <a href="index.html" class="text-slate-500 dark:text-slate-400 font-sans text-xs tracking-wide uppercase hover:text-yellow-500 transition-colors opacity-80 hover:opacity-100">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ── Firebase Script ────────────────────────────────────────────────── -->
+    <script type="module">
+        import {
+            requireAuth,
+            getUserProfile,
+            getUserAudits,
+            logOut
+        } from './js/firebase.js';
+
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // ── Route Guard ───────────────────────────────────────────────────
+        requireAuth();
+
+        const auth = getAuth();
+
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) return;
+
+            // ── Load User Profile ─────────────────────────────────────────
+            const profileResult = await getUserProfile(user.uid);
+            if (profileResult.success) {
+                const profile = profileResult.data;
+                const firstName = profile.full_name?.split(' ')[0] || 'there';
+                const hour = new Date().getHours();
+                const greeting = hour < 12 ? 'Good morning'
+                    : hour < 17 ? 'Good afternoon'
+                    : 'Good evening';
+
+                document.getElementById('welcome-name').textContent = `${greeting}, ${firstName}`;
+                document.getElementById('user-email').textContent =
+                    `${profile.email} · Member since ${formatDate(profile.created_at?.toDate())}`;
+
+                // Avatar initials
+                const initials = profile.full_name
+                    ?.split(' ')
+                    .map(n => n[0])
+                    .join('')
+                    .toUpperCase()
+                    .slice(0, 2) || 'U';
+                document.getElementById('avatar').textContent = initials;
+            }
+
+            // ── Load Audit History ────────────────────────────────────────
+            const auditsResult = await getUserAudits(user.uid);
+            const tbody = document.getElementById('audit-tbody');
+
+            if (auditsResult.success) {
+                const audits = auditsResult.data;
+
+                // Update stats
+                document.getElementById('total-audits').textContent = audits.length;
+                document.getElementById('datasets-uploaded').textContent = audits.length;
+                document.getElementById('last-active').textContent =
+                    audits.length > 0
+                        ? timeAgo(audits[0].created_at?.toDate())
+                        : 'Never';
+
+                // Render table
+                if (audits.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="7" class="py-16 text-center">
+                                <div class="flex flex-col items-center gap-4">
+                                    <span class="material-symbols-outlined text-5xl text-on-surface-variant opacity-30">history</span>
+                                    <p class="font-body-md text-on-surface-variant">No audits yet.</p>
+                                    <button onclick="window.location.href='audit-tool.html'"
+                                        class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-medium hover:bg-primary-fixed transition-colors">
+                                        Start Your First Audit
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>`;
+                } else {
+                    tbody.innerHTML = audits.map(audit => `
+                        <tr class="border-b border-surface-variant hover:bg-surface-container-low transition-colors duration-200">
+                            <td class="py-sm px-md font-medium text-on-surface">
+                                ${escapeHtml(audit.filename || 'Unknown')}
+                            </td>
+                            <td class="py-sm px-md text-on-surface-variant uppercase font-code text-code">
+                                ${escapeHtml(audit.dataset_type || '—')}
+                            </td>
+                            <td class="py-sm px-md capitalize text-on-surface">
+                                ${escapeHtml(audit.protected_attribute || '—')}
+                            </td>
+                            <td class="py-sm px-md font-code text-code ${audit.disparate_impact < 0.8 ? 'text-error' : 'text-tertiary'}">
+                                ${audit.disparate_impact != null ? audit.disparate_impact.toFixed(4) : '—'}
+                            </td>
+                            <td class="py-sm px-md">
+                                <span class="font-label-caps text-[10px] px-2 py-1 rounded-full uppercase tracking-wider
+                                    ${audit.status === 'BIASED'
+                                        ? 'bg-error-container text-on-error-container'
+                                        : 'bg-surface-container-high text-on-surface'}">
+                                    ${escapeHtml(audit.status || '—')}
+                                </span>
+                            </td>
+                            <td class="py-sm px-md text-on-surface-variant">
+                                ${formatDate(audit.created_at?.toDate())}
+                            </td>
+                            <td class="py-sm px-md text-right">
+                                <button class="text-primary-fixed-dim hover:text-primary transition-colors"
+                                    title="PDF download coming soon">
+                                    <span class="material-symbols-outlined">download</span>
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+            } else {
+                // Error state
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="py-12 text-center">
+                            <p class="font-body-sm text-error">Failed to load audit history. Please refresh.</p>
+                        </td>
+                    </tr>`;
+                document.getElementById('total-audits').textContent = '—';
+                document.getElementById('datasets-uploaded').textContent = '—';
+                document.getElementById('last-active').textContent = '—';
+            }
+        });
+
+        // ── Logout ────────────────────────────────────────────────────────
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to sign out?')) {
+                logOut();
+            }
+        });
+
+        // ── Theme Toggle ──────────────────────────────────────────────────
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            document.documentElement.classList.toggle('light', !isDark);
+            themeToggle.querySelector('span').textContent = isDark ? 'light_mode' : 'dark_mode';
+        });
+
+        // ── Helpers ───────────────────────────────────────────────────────
+        function formatDate(date) {
+            if (!date) return '—';
+            return date.toLocaleDateString('en-IN', {
+                day: 'numeric', month: 'short', year: 'numeric'
+            });
+        }
+
+        function timeAgo(date) {
+            if (!date) return '—';
+            const seconds = Math.floor((new Date() - date) / 1000);
+            if (seconds < 60) return 'Just now';
+            if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
+            if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
+            if (seconds < 2592000) return `${Math.floor(seconds / 86400)}d ago`;
+            return formatDate(date);
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
+
+</body>
+</html>
