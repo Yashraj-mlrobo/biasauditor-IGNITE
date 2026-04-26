@@ -281,7 +281,7 @@
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
         // ── Route Guard ───────────────────────────────────────────────────
-        requireAuth();
+        setTimeout(() => requireAuth(), 500);
 
         const auth = getAuth();
 

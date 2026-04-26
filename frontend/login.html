@@ -111,72 +111,6 @@
         }
     </script>
 </head>
-<!-- Firebase Auth -->
-<script type="module">
-    import { signIn, signInWithGoogle, redirectIfLoggedIn } 
-    from './js/firebase.js';
-
-    // Redirect if already logged in
-    redirectIfLoggedIn();
-
-    // Dark mode toggle
-    const toggleBtn = document.querySelector('[aria-label="Toggle dark mode"]');
-    toggleBtn.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark');
-        document.documentElement.classList.toggle('light');
-        const icon = toggleBtn.querySelector('span');
-        icon.textContent = document.documentElement.classList.contains('dark') 
-            ? 'light_mode' : 'dark_mode';
-    });
-
-    // Email/Password Login
-    const form = document.querySelector('form');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const btn = form.querySelector('button[type="submit"]');
-        
-        btn.textContent = 'Signing in...';
-        btn.disabled = true;
-
-        const result = await signIn(email, password);
-
-        if (result.success) {
-            window.location.href = 'dashboard.html';
-        } else {
-            btn.textContent = 'Sign In';
-            btn.disabled = false;
-            showError(result.error);
-        }
-    });
-
-    // Google Login
-    const googleBtn = document.querySelector('button[type="button"]');
-    googleBtn.addEventListener('click', async () => {
-        const result = await signInWithGoogle();
-        if (result.success) {
-            window.location.href = 'dashboard.html';
-        } else {
-            showError(result.error);
-        }
-    });
-
-    function showError(message) {
-        let errorDiv = document.getElementById('error-msg');
-        if (!errorDiv) {
-            errorDiv = document.createElement('div');
-            errorDiv.id = 'error-msg';
-            errorDiv.className = 'mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm text-center';
-            document.querySelector('form').after(errorDiv);
-        }
-        errorDiv.textContent = message
-            .replace('Firebase: ', '')
-            .replace('(auth/invalid-credential).', 'Invalid email or password.')
-            .replace('(auth/user-not-found).', 'No account found with this email.')
-            .replace('(auth/wrong-password).', 'Incorrect password.');
-    }
-</script>
 
 <body class="bg-surface text-on-surface min-h-screen flex items-center justify-center relative p-6">
     <div class="absolute top-6 right-6">
@@ -265,6 +199,10 @@
             </p>
         </div>
     </div>
+
+    <!-- Firebase Auth -->
+    <script type="module" src="./js/auth.js"></script>
+
 </body>
 
 </html>
