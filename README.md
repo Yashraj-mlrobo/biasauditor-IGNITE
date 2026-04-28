@@ -110,8 +110,3 @@ Amity University Mumbai · Google Solution Challenge 2026
 
 > *"We don't just solve problems — we ignite movements."*
 
----
-
-## License
-
-MIT License — feel free to use, modify, and build on this.
