@@ -13,7 +13,7 @@ const isSignup = document.getElementById('fullName') !== null;
 const isLogin = document.getElementById('email') !== null && !isSignup;
 
 // ── Redirect if already logged in ────────────────────────────────────────────
-redirectIfLoggedIn();
+//redirectIfLoggedIn();
 
 // ── Dark mode toggle ──────────────────────────────────────────────────────────
 const toggleBtn = document.querySelector('[aria-label="Toggle dark mode"]');
@@ -31,10 +31,16 @@ function showError(message) {
         errorDiv = document.createElement('div');
         errorDiv.id = 'auth-error';
         errorDiv.className = 'p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm text-center mb-4';
-        const form = document.querySelector('form');
+        
+        // Find the form to attach the error to
+        const form = document.getElementById('login-form') || document.querySelector('form');
         form?.prepend(errorDiv);
     }
-    errorDiv.textContent = message
+    
+    // Safely handle cases where message might be undefined
+    const errorText = message || "An unknown error occurred.";
+    
+    errorDiv.textContent = errorText
         .replace('Firebase: ', '')
         .replace('(auth/email-already-in-use).', 'An account with this email already exists.')
         .replace('(auth/invalid-credential).', 'Invalid email or password.')
@@ -124,9 +130,9 @@ if (isSignup) {
     googleBtn?.addEventListener('click', async () => {
         clearError();
         const result = await signInWithGoogle();
-        if (result.success) {
+        if (result && result.success) {
             window.location.href = 'dashboard.html';
-        } else {
+        } else if (result) {
             showError(result.error);
         }
     });
@@ -138,49 +144,69 @@ if (isSignup) {
 
 // ── LOGIN LOGIC ───────────────────────────────────────────────────────────────
 if (isLogin) {
-    const form = document.querySelector('form');
-    const googleBtn = document.querySelector('button[type="button"]');
+    // FORCE JavaScript to look at this specific form ID
+    const form = document.getElementById('login-form'); 
+    
+    // Grab the SECOND button of type="button" (the first is the password eye icon)
+    const googleBtn = document.querySelectorAll('button[type="button"]')[1];
 
-    form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        clearError();
+    // Only run this if the form actually exists on the page
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearError();
 
-        const email = document.getElementById('email')?.value.trim();
-        const password = document.getElementById('password')?.value;
-        const submitBtn = form.querySelector('button[type="submit"]');
+            const email = document.getElementById('email')?.value.trim();
+            const password = document.getElementById('password')?.value;
+            const submitBtn = form.querySelector('button[type="submit"]');
 
-        if (!email || !password) {
-            showError('Please fill in all fields.');
-            return;
-        }
+            if (!email || !password) {
+                showError('Please fill in all fields.');
+                return;
+            }
 
-        submitBtn.textContent = 'Signing in...';
-        submitBtn.disabled = true;
+            // Loading state
+            submitBtn.textContent = 'Signing in...';
+            submitBtn.disabled = true;
 
-        console.log('Attempting login for:', email);
+            console.log('Attempting login for:', email);
 
-        const result = await signIn(email, password);
+            // Ask Firebase to authenticate
+            const result = await signIn(email, password);
 
-        console.log('Login result:', result);
+            console.log('Login result:', result);
 
-        if (result.success) {
-            console.log('Login successful! Redirecting...');
-            window.location.href = 'dashboard.html';
-        } else {
-            submitBtn.textContent = 'Sign In';
-            submitBtn.disabled = false;
-            showError(result.error);
-        }
-    });
+            if (result && result.success) {
+                console.log('Login successful! Redirecting...');
+                // Small delay to let Firebase set session before redirect
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 800);
+            } else {
+                // Reset button and show error
+                submitBtn.textContent = 'Sign In';
+                submitBtn.disabled = false;
+                showError(result ? result.error : "An unknown error occurred.");
+            }
+        });
+    } else {
+        console.error("CRITICAL ERROR: Could not find <form id='login-form'> in your HTML.");
+    }
 
-    // Google login
-    googleBtn?.addEventListener('click', async () => {
-        clearError();
-        const result = await signInWithGoogle();
-        if (result.success) {
-            window.location.href = 'dashboard.html';
-        } else {
-            showError(result.error);
-        }
-    });
+    // Google login (FIXED)
+    if (googleBtn) {
+        googleBtn.addEventListener('click', async () => {
+            clearError();
+            console.log('Attempting Google Sign-In...');
+            
+            const result = await signInWithGoogle(); // <-- The missing logic has been added here
+            
+            if (result && result.success) {
+                console.log('Google Login successful! Redirecting...');
+                window.location.href = 'dashboard.html';
+            } else if (result) {
+                showError(result.error);
+            }
+        });
+    }
 }

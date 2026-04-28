@@ -43,3 +43,12 @@ data/
 
 # Docker
 *.log
+
+# Add this to .gitignore
+frontend/js/firebase.js
+
+echo "frontend/js/firebase.js" >> .gitignore
+echo "frontend/js/config.js" >> .gitignore
+git add .gitignore
+git commit -m "fix: add firebase.js to gitignore to protect API keys"
+git push origin main
