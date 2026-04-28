@@ -1,27 +1,27 @@
 # Core bias detection & fairness
-aif360==0.6.1
-fairlearn==0.10.0
+aif360
+fairlearn
 
 # Explainability
-shap==0.45.0
+shap
 
 # ML & data
 scikit-learn
-pandas==2.2.2
-numpy==1.26.4
+pandas
+numpy
 
 # Visualization
-plotly==5.22.0
-matplotlib==3.9.0
+plotly
+matplotlib
 
 # Dashboard UI
-streamlit==1.35.0
+streamlit
 
 # Google Gemini
-google-genai>=0.8.0
+google-genai
 
 # PDF export
-reportlab==4.2.2
+reportlab
 
 # Utilities
-python-dotenv==1.0.1
+python-dotenv
