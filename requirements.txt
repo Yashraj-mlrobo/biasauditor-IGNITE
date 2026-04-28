@@ -6,7 +6,7 @@ fairlearn==0.10.0
 shap==0.45.0
 
 # ML & data
-scikit-learn==1.4.2
+scikit-learn
 pandas==2.2.2
 numpy==1.26.4
 
